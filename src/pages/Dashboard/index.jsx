@@ -29,8 +29,8 @@ function Dashboard({ authenticated }) {
         },
       })
       .then((response) => {
-        const apiTasks = response.data.data.map((task) => ({
-          ...task,
+        const apiTasks = response.data.data.map((item) => ({
+          ...item,
           createdAt: new Date(task.createdAt).toLocaleDateString("pt-BR", {
             day: "2-digit",
             month: "long",
@@ -96,12 +96,12 @@ function Dashboard({ authenticated }) {
             register={register}
             name="task"
             error=""
-            placeHolder="Nova Tarefa"
+            placeholder="Nova Tarefa"
           />
           <Button type="submit">Adicionar</Button>
         </section>
       </InputContainer>
-      <TaskContainer>
+      <TaskContainer data-testid="tasks-container">
         {task.map((task) => (
           <Card
             key={task._id}
